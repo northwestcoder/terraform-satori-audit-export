@@ -140,7 +140,9 @@ This last command executes all of the instructions and builds the solution.
 gcloud pubsub topics publish satori-audit-export-request --message="3"
 ```
 
-By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve Satori audit data using the Satori Rest API, for the last three days. You can change ```message="3"``` to any value up to 90. Don't forget the quotes.
+- By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve Satori audit data using the Satori Rest API, for the last three days.
+- You can change ```message="3"``` to any value up to 90. Don't forget the quotes.
+- From a production POV, you can envision setting up a schedule to send a message to Pubsub, e.g. Once a week retrieve the last 7 days of audit data. Try this [quick start](https://cloud.google.com/scheduler/docs/tut-pub-sub) for more info.
 
 **You should have Satori audit data now. Success!**
 
