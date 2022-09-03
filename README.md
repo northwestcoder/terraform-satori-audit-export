@@ -58,7 +58,7 @@ This will launch your browser and authenticate you against GCP. This needs to su
 
 5. Where PROJECT_ID is from the above step.
 
-6. You *must* turn on the following API's or else failure.
+6. You *must* turn on the following API's or else failure. You can paste the following into your terminal - it may take 1-2 minutes to run.
 ```
 gcloud services enable cloudapis.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
@@ -78,8 +78,6 @@ gcloud services enable storage-api.googleapis.com
 gcloud services enable storage-component.googleapis.com
 gcloud services enable storage.googleapis.com
 ```
-
-You can paste the above into your terminal - it may take 1-2 minutes to run.
 
 7. If you haven't done so yet, download this repository and edit the variables
  
