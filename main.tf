@@ -90,6 +90,12 @@ resource "google_sql_user" "users" {
   ]
 }
 
+resource "google_sql_ssl_cert" "client_cert" {
+  count = var.ssl_mode == true ? 1 : 0
+  common_name = "Satori client cert"
+  instance    = google_sql_database_instance.instance.name
+}
+
 ###########################
 # BUCKETS FOR CLOUD FUNCTION
 
