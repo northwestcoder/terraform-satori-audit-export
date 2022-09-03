@@ -54,7 +54,9 @@ This will launch your browser and authenticate you against GCP. This needs to su
 
 4. Back in your command terminal, run:
 
-```gcloud config set project PROJECT_ID```
+```
+gcloud config set project PROJECT_ID
+```
 
 - Where PROJECT_ID is from the above step.
 
