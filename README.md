@@ -8,7 +8,7 @@
 	- when a message is received via Google PubSub to a certain topic, then
 	- extract Satori query/audit data, and then
 	- insert that data into a Cloud SQL instance (Postgres)
-	- 
+
 - What you will need:
 	- A [Google Cloud](https://console.cloud.google.com/welcome) account and the ability to create new cloud projects.
 	- A [Satori](https://satoricyber.com/testdrive) account with admin rights.
@@ -23,7 +23,14 @@
 	- The Cloud Function we build uses Python 3.10 and runs under the standard GCP 'appspot' account. Your org IAM policy settings may prohibit this.
 	- There are many other reasons this config will fail, and they will _all_ have something to do with the way your GCP security is configured.
 
-- One of the first requirement is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used. You need to be an admin for that Satori account. Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
+- Satori Config:
+	- One of the first requirements is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used.
+	- You need to be an admin for that Satori account. 
+	- Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
+	- You only need three pieces of info from Satori:
+		- Your Account ID
+		- Your Service Account ID (that needs to be created)
+		- Your Service Account Key (created with the service account)
 
 - The rest of the requirements are shown in the following steps - each step must succeed in order to proceed to the next step!
 
