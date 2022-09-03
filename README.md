@@ -50,7 +50,7 @@ gcloud auth login
 
 This will launch your browser and authenticate you against GCP. This needs to succeed, in order to continue.
 
-3. IN WEB BROWSER: create a new empty GCP project, you should be admin for this project. Take note of its PROJECT_ID
+3. In your web browser, log into the [Google Cloud Console](https://console.cloud.google.com) and create a new empty GCP project, you should be admin for this project. Take note of the PROJECT_ID.
 
 4. Back in your command terminal:
 
@@ -58,7 +58,7 @@ This will launch your browser and authenticate you against GCP. This needs to su
 
 5. Where PROJECT_ID is from the above step.
 
-6. You *must* turn on the following API's or else failure. You can paste the following into your terminal - it may take 1-2 minutes to run.
+6. You *must* turn on the following API's or else failure will occur. You can paste the following into your terminal - it may take 1-2 minutes to run.
 ```
 gcloud services enable cloudapis.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
@@ -79,12 +79,12 @@ gcloud services enable storage-component.googleapis.com
 gcloud services enable storage.googleapis.com
 ```
 
-7. If you haven't done so yet, download this repository and edit the variables
+7. If you haven't done so yet, download this repository that you are currently reading and edit the variables:
  
 - Use git clone, or, download zip and extract. 
-- In your terminal, navigate to the directory where this repository is located. 
-- With a text editor, you _must_ edit the file ```terraform.tfvars``` file and change any value in ALLCAPS accordingly. 
-- You _can_ change the other values as well, if desired, such as the database password:
+- In your terminal, navigate to the directory where this repository is located.
+- With a text editor, you _must_ edit any value in ALLCAPS in the file ```terraform.tfvars```. 
+- You _can_ optionally change the other values as well, such as the database password or GCP region and zone. Then save the file.
 ```
 #project vars
 project = "YOUR_GCP_PROJECT_ID_FROM_PREVIOUS_STEP"
@@ -127,12 +127,13 @@ terraform apply
 This last command executes all of the instructions and builds the solution.
 
 - **Now wait about 15-20 minutes while terraform deploys the following:**
-	- A Pubsub topic which will trigger our function 
-	- Cloud Storage for our python code
-	- Cloud SQL Instance for storing the audit data
-	- Cloud Function for running the python code
-- The SQL instance takes the longest - up to 15 minutes. Ideally, this command returns with no errors nor warnings. 
-- If everything worked, the text output will show the IP address of the postgres database.
+	- A Pubsub topic which will trigger our function.
+	- Cloud Storage for our python code.
+	- A Cloud SQL Instance for storing the audit data.
+	- A Cloud Function for running the python code.
+- The SQL instance takes the longest - up to 15 minutes.
+- Ideally, this command returns with no errors nor warnings. 
+- If everything worked, the text output will show the IP address of the Postgres database that was created.
 
 9. At the command line, send this message:
 ```
@@ -145,15 +146,15 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 
 **You should have Satori audit data now. Success!**
 
-Your client IP will have been added to the database network list, so you can fire up your favorite db client and connect to your new Satori Postgres database hosting your audit data using the IP address which was output from the previous step.
-
-This quick start defaults to SQL SSL mode = false, so SSL is not enabled. If you change to this to 'true', then you will need to configure client certificates and add those to your database client - this is outside the scope of this quick start.
+- Your client IP will have been added to the database network list.
+- You can now launch your favorite db client and connect to your new Postgres database hosting your Satori audit data using the IP address which was output from the previous step. If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
+- This quick start defaults to SQL SSL mode = false, so SSL is not enabled. If you change to this to 'true', then you will need to configure client certificates and add those to your database client - these steps are outside the scope of this quick start.
 
 **Clean up / Tear Down**
 
 - If you run ```terraform destroy``` it will throw an error on the sql instance step.
-- This is because terraform detects that the database is no longer empty (if you ran all the steps above).
+- This is because terraform detects that the database is no longer empty - if you ran all the steps above this is true.
 - To fix this, 
  	- first run ```drop table public.audit_data``` in your database client. 
  	- You will also need to "end" or "close" your connection or otherwise quit your database client.
-- Once you have done both of these steps, now at the command line you can run ```terraform destroy```, and all of the above resources will be removed from your Google Cloud project.
+- Once you have done both of these steps, now at the command line you can run ```terraform destroy``` and all of the terraform-created resources will be removed from your Google Cloud project.
