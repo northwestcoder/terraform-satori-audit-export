@@ -24,7 +24,7 @@
 	- There are many other reasons this config will fail, and they will _all_ have something to do with the way your GCP security is configured.
 
 - Satori Config:
-	- One of the first requirements is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used.
+	- One of the first requirements is that you already have a [Satori account](https://www.satoricyber.com/testdrive) and that account has some audit data - i.e. the account is actively being used.
 	- You need to be an admin for that Satori account. 
 	- Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
 	- You only need three pieces of info from Satori:
