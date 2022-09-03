@@ -110,7 +110,7 @@ terraform validate
 terraform apply
 ```
 
-- Now wait about 15-20 minutes while terraform deploys the following:
+- **Now wait about 15-20 minutes while terraform deploys the following:**
 	- A Pubsub topic which will trigger our function 
 	- Cloud Storage for our python code
 	- Cloud SQL Instance for storing the audit data
