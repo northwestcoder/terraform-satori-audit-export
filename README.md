@@ -153,5 +153,7 @@ This quick start defaults to SQL SSL mode = false, so SSL is not enabled. If you
 
 - If you run ```terraform destroy``` it will throw an error on the sql instance step.
 - This is because terraform detects that the database is no longer empty (if you ran all the steps above).
-- To fix this, first run ```drop table public.audit_data``` in your database client.
-- Now at the command line you can run ```terraform destroy```, and all of the above resources will be removed from your Google Cloud project.
+- To fix this, 
+ 	- first run ```drop table public.audit_data``` in your database client. 
+ 	- You will also need to "end" or "close" your connection or otherwise quit your database client.
+- Once you have done both of these steps, now at the command line you can run ```terraform destroy```, and all of the above resources will be removed from your Google Cloud project.
