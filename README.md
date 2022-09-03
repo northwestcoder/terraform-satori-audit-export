@@ -2,7 +2,7 @@
 
 ![Satori Logi](https://satoricyber.com/wp-content/uploads/LogoDark2.svg)
 
-#### A Terraform config for creating GCP resources to receive Satori query audit data
+#### :large_blue_diamond: A Terraform config for creating GCP resources to receive Satori query audit data
 
 - The following steps are meant as a quick-start guide.
 
@@ -38,7 +38,7 @@
 
 ___
 
-#### :orange_circle:  Setup
+#### :orange_circle: Setup
 
 1. Install gcloud and terraform: 
 
@@ -152,7 +152,7 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 
 ___
 
-#### :green_circle:  Usage
+#### :green_circle: Usage
 
 **You should have Satori audit data now. Success!**
 
@@ -162,7 +162,7 @@ ___
 - If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
 - This quick start defaults to ```ssl_mode = false```, so SSL is not enabled. If you change this to 'true', then you will need to configure [Google SQL client certificates](https://cloud.google.com/sql/docs/postgres/configure-ssl-instance) and add the client certs to your database client - these steps are outside the scope of this quick start but are readily achieved.
 
-#### :red_circle:  Clean up / Tear Down
+#### :red_circle: Clean up / Tear Down
 
 - To unapply in terraform, you run ```terraform destroy```.
 - However, if you run ```terraform destroy``` for this project, it will throw an error on the SQL instance step.
