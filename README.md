@@ -86,6 +86,7 @@ gcloud services enable storage.googleapis.com
 - With a text editor, you _must_ edit any value in ALLCAPS in the file ```terraform.tfvars```. 
 - You _can_ optionally change the other values as well, such as the database password or GCP region and zone. Then save the file.
 ```
+#contents of terraform.tfvars file
 #project vars
 project = "YOUR_GCP_PROJECT_ID_FROM_PREVIOUS_STEP"
 region = "us-east1"
