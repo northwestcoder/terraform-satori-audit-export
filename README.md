@@ -164,7 +164,8 @@ ___
 
 #### :red_circle:  Clean up / Tear Down
 
-- If you run ```terraform destroy``` it will throw an error on the sql instance step.
+- To unapply in terraform, you run ```terraform destroy```.
+- However, if you run ```terraform destroy``` for this project, it will throw an error on the SQL instance step.
 - This is because terraform detects that the database is no longer empty - if you ran all the steps above this is true.
 - To fix this, 
  	- first run ```drop table public.audit_data``` in your database client. 
