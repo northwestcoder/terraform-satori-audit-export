@@ -53,9 +53,12 @@ gcloud auth login
 
 This will launch your browser and authenticate you against GCP. This needs to succeed, in order to continue.
 
-3. In your web browser, log into the [Google Cloud Console](https://console.cloud.google.com) and create a new empty GCP project, you should be admin for this project. Take note of the PROJECT_ID.
+3. In your command terminal, run the following command. This creates a project whose ID is "satori-audit-exports". You will need this ID later.
+```
+gcloud projects create satori-audit-exports --="Satori Audit Exports"
+```
 
-4. Back in your command terminal, run the following command, replacing PROJECT_ID with the correct value from the previous step:
+4. In your command terminal, run the following command, replacing PROJECT_ID with the correct value from the previous step:
 ```
 gcloud config set project PROJECT_ID
 ```
