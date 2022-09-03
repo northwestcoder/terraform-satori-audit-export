@@ -2,7 +2,7 @@
 
 ![Satori Logi](https://satoricyber.com/wp-content/uploads/LogoDark2.svg)
 
-**A Terraform config for creating GCP resources to receive Satori security audit data**
+**A Terraform config for creating GCP resources to receive Satori query audit data**
 
 - The following steps are meant as a quick-start guide.
 
