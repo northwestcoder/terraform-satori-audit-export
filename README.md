@@ -36,8 +36,9 @@
 
 - The rest of the requirements are shown in the following steps - each step must succeed in order to proceed to the next step!
 
-
 ___
+
+:orange_circle:  **Setup**
 
 1. Install gcloud and terraform: 
 
@@ -149,7 +150,9 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 
 ___
 
-**:green_circle:  You should have Satori audit data now. Success!**
+:green_circle:  **Usage**
+
+**You should have Satori audit data now. Success!**
 
 - Your client IP will have been added to the database network list.
 - You can now launch your favorite db client and connect to your new Postgres database hosting your Satori audit data.
