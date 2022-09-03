@@ -8,16 +8,21 @@
 	- extract Satori query/audit data, and then
 	- insert that data into a Cloud SQL instance (Postgres)
 
-_GCP opinions:_
+- What you will need
+	- A (Google (Cloud)[https://console.cloud.google.com/welcome] account and the ability to create new projects.
+	- A (Satori)[https://satoricyber.com/testdrive] account with admin rights.
+	- Access to a command-line and terminal session.
 
-- This example was tested using a very plain, simple GCP project and zero GCP 'organizations'. 
-- All of the security settings are 'default' and thus have reasonable security.
-- However, your org may have an entirely different security topology which will make this config fail.
-- The SQL database that we create is assigned a public IP address. Your org IAM policy settings may prohibit this.
-- The Cloud Function we build uses Python 3.10 and runs under the standard GCP 'appspot' account. Your org IAM policy settings may prohibit this.
-- There are many other reasons this config will fail, and they will _all_ have something to do with the way your GCP security is configured.
+- _GCP opinions:_
 
-The first requirement is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used. You need to be an admin for that Satori account. Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
+	- This example was tested using a very plain, simple GCP project and zero GCP 'organizations'. 
+	- All of the security settings are 'default' and thus have reasonable security.
+	- However, your org may have an entirely different security topology which will make this config fail.
+	- The SQL database that we create is assigned a public IP address. Your org IAM policy settings may prohibit this.
+	- The Cloud Function we build uses Python 3.10 and runs under the standard GCP 'appspot' account. Your org IAM policy settings may prohibit this.
+	- There are many other reasons this config will fail, and they will _all_ have something to do with the way your GCP security is configured.
+
+One of the first requirement is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used. You need to be an admin for that Satori account. Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
 
 The rest of the requirements are shown in the following steps - each step must succeed in order to proceed to the next step!
 
