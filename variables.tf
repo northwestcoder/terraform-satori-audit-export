@@ -38,6 +38,10 @@ variable "postgres_port" {
   default = "5432"
 }
 
+variable "ssl_mode" {
+  default = false
+}
+
 variable "satori-audit-export-request" {
   default = "satori-audit-export-request"
 }
