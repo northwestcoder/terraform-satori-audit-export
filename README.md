@@ -8,7 +8,7 @@
 
 - The end result will be a new GCP project with an automation solution:
 	- when a message is received via Google PubSub to a certain topic, then
-	- extract Satori query/audit data, and then
+	- extract Satori query/audit data for the specified relative timeframe, and then
 	- insert that data into a Cloud SQL instance (Postgres)
 
 - What you will need:
@@ -143,8 +143,9 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 ```
 
 - By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve Satori audit data using the Satori Rest API, for the last three days.
-- You can change ```message="3"``` to any value up to 90. Don't forget the quotes.
-- From a production POV, you can envision setting up a schedule to send a message to Pubsub, e.g. Once a week retrieve the last 7 days of audit data. Try this [quick start](https://cloud.google.com/scheduler/docs/tut-pub-sub) for more info.
+- You can change ```message="3"``` to any value up to 90. Don't forget the quotes. 
+- This message based trigger is usefull in many ways due to the relative nature of the "days ago" parameter, combined with primary key support for the audit data itself using column ```flow_id```.
+- For example, from a production POV you can envision setting up a schedule to send a message to Pubsub once a week, to retrieve the last 7 days of audit data. Try this [quick start](https://cloud.google.com/scheduler/docs/tut-pub-sub) for more info.
 
 ___
 
