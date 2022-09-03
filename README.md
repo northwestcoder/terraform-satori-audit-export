@@ -58,9 +58,9 @@ This will launch your browser and authenticate you against GCP. This needs to su
 gcloud projects create satori-audit-exports --name="Satori Audit Exports Terraform"
 ```
 
-4. In your command terminal, run the following command, replacing PROJECT_ID with the correct value from the previous step:
+4. In your command terminal, run the following command to switch to this project for gcloud:
 ```
-gcloud config set project PROJECT_ID
+gcloud config set project satori-audit-exports
 ```
 
 5. You *must* turn on the following API's or else failure will occur. You can paste the following into your terminal - it may take 1-2 minutes to run.
