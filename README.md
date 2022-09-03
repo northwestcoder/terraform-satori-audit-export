@@ -124,7 +124,7 @@ terraform apply
 gcloud pubsub topics publish satori-audit-export-request --message="3"
 ```
 
-By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve data for the last three days. You can change ```message="3"``` to any value up to 90. Don't forget the quotes.
+By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve Satori audit data using the Satori Rest API, for the last three days. You can change ```message="3"``` to any value up to 90. Don't forget the quotes.
 
 **You should have Satori audit data now. Success!**
 
