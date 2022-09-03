@@ -12,6 +12,7 @@ postgres_schema_name = "public"
 postgres_table_name = "audit_data"
 postgres-server-instance-name = "satori-terraform-postgres"
 postgres_port = "5432"
+ssl_mode = false
 
 #pubsub topic name
 satori-audit-export-request = "satori-audit-export-request"
