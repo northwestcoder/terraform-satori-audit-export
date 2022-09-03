@@ -3,15 +3,16 @@
 **A Terraform config for creating GCP resources to receive Satori security audit data**
 
 - The following steps are meant as a quick-start guide.
+
 - The end result will be a new GCP project with an automation solution:
 	- when a message is received via Google PubSub to a certain topic, then
 	- extract Satori query/audit data, and then
 	- insert that data into a Cloud SQL instance (Postgres)
-
-- What you will need
-	- A (Google (Cloud)[https://console.cloud.google.com/welcome] account and the ability to create new projects.
-	- A (Satori)[https://satoricyber.com/testdrive] account with admin rights.
-	- Access to a command-line and terminal session.
+	- 
+- What you will need:
+	- A [Google Cloud](https://console.cloud.google.com/welcome) account and the ability to create new cloud projects.
+	- A [Satori](https://satoricyber.com/testdrive) account with admin rights.
+	- Access to a command line / terminal session.
 
 - _GCP opinions:_
 
@@ -22,9 +23,9 @@
 	- The Cloud Function we build uses Python 3.10 and runs under the standard GCP 'appspot' account. Your org IAM policy settings may prohibit this.
 	- There are many other reasons this config will fail, and they will _all_ have something to do with the way your GCP security is configured.
 
-One of the first requirement is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used. You need to be an admin for that Satori account. Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
+- One of the first requirement is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used. You need to be an admin for that Satori account. Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
 
-The rest of the requirements are shown in the following steps - each step must succeed in order to proceed to the next step!
+- The rest of the requirements are shown in the following steps - each step must succeed in order to proceed to the next step!
 
 
 ___
@@ -42,9 +43,7 @@ gcloud auth login
 
 This will launch your browser and authenticate you against GCP. This needs to succeed, in order to continue.
 
-
 3. IN WEB BROWSER: create a new empty GCP project, you should be admin for this project. Take note of its PROJECT_ID
-
 
 4. Back in your command terminal:
 
@@ -53,7 +52,6 @@ This will launch your browser and authenticate you against GCP. This needs to su
 5. Where PROJECT_ID is from the above step.
 
 6. You *must* turn on the following API's or else failure.
-
 ```
 gcloud services enable cloudapis.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
@@ -124,7 +122,6 @@ terraform apply
 - If everything worked, the text output will show the IP address of the postgres database.
 
 9. At the command line, send this message:
-
 ```
 gcloud pubsub topics publish satori-audit-export-request --message="3"
 ```
