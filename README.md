@@ -43,7 +43,7 @@ ___
 
 	- Hashicorp Terraform install [info here](https://www.terraform.io/downloads). For example, we used the brew method.
 
-2. Once both are installed, log into gcloud:
+2. Once both are installed, at your command line, log into gcloud:
 ```
 gcloud auth login
 ```
