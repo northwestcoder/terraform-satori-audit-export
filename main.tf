@@ -59,7 +59,7 @@ resource "google_sql_database_instance" "instance" {
     }
     ip_configuration {
       ipv4_enabled = true
-      require_ssl  = false
+      require_ssl  = var.ssl_mode
 
       dynamic "authorized_networks" {
         for_each = local.authorized_networks
