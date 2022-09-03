@@ -46,19 +46,17 @@ ___
 
 	- Hashicorp Terraform install [info here](https://www.terraform.io/downloads). For example, we used the brew method.
 
-2. Once both are installed, at your command line, log into gcloud:
+2. Once both are installed, in your command terminal, run the following. This will launch your browser and authenticate you against Google Cloud. This needs to succeed, in order to continue:
 ```
 gcloud auth login
 ```
 
-This will launch your browser and authenticate you against GCP. This needs to succeed, in order to continue.
-
-3. In your command terminal, run the following command. This creates a project whose ID is "satori-audit-exports". You will need this ID later.
+3. In your command terminal, run the following. This creates a project whose ID is "satori-audit-exports". You will need this ID later.
 ```
 gcloud projects create satori-audit-exports --name="Satori Audit Exports Terraform"
 ```
 
-4. In your command terminal, run the following command to switch to this project for gcloud:
+4. In your command terminal, run the following to switch to this project for gcloud:
 ```
 gcloud config set project satori-audit-exports
 ```
