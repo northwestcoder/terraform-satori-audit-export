@@ -2,6 +2,8 @@
 
 **A Terraform config for creating GCP resources to receive Satori security audit data**
 
+![Satori Logi](https://satoricyber.com/wp-content/uploads/LogoDark2.svg)
+
 - The following steps are meant as a quick-start guide.
 
 - The end result will be a new GCP project with an automation solution:
