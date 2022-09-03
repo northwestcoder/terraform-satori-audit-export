@@ -158,7 +158,7 @@ ___
 
 - Your client IP will have been added to the database network list.
 - You can now launch your favorite db client and connect to your new Postgres database hosting your Satori audit data.
-- The hostname is the IP address which was output from the previous step.
+- The hostname is the IP address which was output to the terminal at the end of ```terraform apply```.
 - If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
 - This quick start defaults to ```ssl_mode = false```, so SSL is not enabled. If you change this to 'true', then you will need to configure [Google SQL client certificates](https://cloud.google.com/sql/docs/postgres/configure-ssl-instance) and add the client certs to your database client - these steps are outside the scope of this quick start but are readily achieved.
 
