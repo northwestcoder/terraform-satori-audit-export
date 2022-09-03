@@ -100,6 +100,7 @@ postgres_schema_name = "public"
 postgres_table_name = "audit_data"
 postgres-server-instance-name = "satori-terraform-postgres"
 postgres_port = "5432"
+ssl_mode = false
 
 #pubsub topic name
 satori-audit-export-request = "satori-audit-export-request"
@@ -145,6 +146,8 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 **You should have Satori audit data now. Success!**
 
 Your client IP will have been added to the database network list, so you can fire up your favorite db client and connect to your new Satori Postgres database hosting your audit data using the IP address which was output from the previous step.
+
+This quick start defaults to SQL SSL mode = false, so SSL is not enabled. If you change to this to 'true', then you will need to configure client certificates and add those to your database client - this is outside the scope of this quick start.
 
 **Clean up / Tear Down**
 
