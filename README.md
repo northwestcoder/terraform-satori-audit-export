@@ -149,7 +149,7 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 
 ___
 
-**You should have Satori audit data now. Success!**
+**:green_circle:You should have Satori audit data now. Success!**
 
 - Your client IP will have been added to the database network list.
 - You can now launch your favorite db client and connect to your new Postgres database hosting your Satori audit data.
@@ -157,7 +157,7 @@ ___
 - If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
 - This quick start defaults to SQL SSL mode = false, so SSL is not enabled. If you change this to 'true', then you will need to configure [Google SQL client certificates](https://cloud.google.com/sql/docs/postgres/configure-ssl-instance) and add those certs to your database client - these steps are outside the scope of this quick start but readily solved.
 
-**Clean up / Tear Down**
+**:red_circle: Clean up / Tear Down**
 
 - If you run ```terraform destroy``` it will throw an error on the sql instance step.
 - This is because terraform detects that the database is no longer empty - if you ran all the steps above this is true.
