@@ -1,5 +1,10 @@
-#project vars
-project = "YOUR_GCP_PROJECT_ID_FROM_PREVIOUS_STEP"
+#satori vars
+satori_serviceaccount_id = "SATORI_SA_ID"
+satori_serviceaccount_key = "SATORI_SA_KEY"
+satori_account_id = "SATORI_ACCOUNT_ID"
+
+#GCP vars
+project = "satori-audit-exports"
 region = "us-east1"
 zone = "us-east1-c"
 
@@ -16,9 +21,5 @@ ssl_mode = false
 
 #pubsub topic name
 satori-audit-export-request = "satori-audit-export-request"
-
-#satori info
-satori_serviceaccount_id = "SATORI_SA_ID"
-satori_serviceaccount_key = "SATORI_SA_KEY"
-satori_account_id = "SATORI_ACCOUNT_ID"
+#satori api host
 satori_api_host = "app.satoricyber.com"
