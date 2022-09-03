@@ -116,11 +116,11 @@ satori_api_host = "app.satoricyber.com"
 ```
 terraform init
 ```
-This sets up the Terraform environment
+This sets up the Terraform environment for this project.
 ```
 terraform validate
 ```
-This validates the .tf files
+This validates the .tf files.
 ```
 terraform apply
 ```
