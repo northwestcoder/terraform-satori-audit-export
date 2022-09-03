@@ -177,3 +177,8 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
  	- first run ```drop table public.audit_data``` in your database client. 
  	- You will also need to "end" or "close" your connection or otherwise quit your database client.
 - Once you have done both of these steps, now at the command line you can run ```terraform destroy``` and all of the terraform-created resources will be removed from your Google Cloud project.
+- Note about running this terraform config multiple times: 
+ 	- Cloud SQL names are reserved for 10 days. 
+ 	- If you run a destroy, and then re-run an apply, you will get an error on the Cloud SQL step. 
+ 	- This is because even though terraform deleted the Cloud SQL instance, Google Cloud keeps its name reserved for up to ten days.
+ 	- To solve for this, each time you re-run this terraform config, you will need to change the ```postgres-server-instance-name``` variable to a new value.
