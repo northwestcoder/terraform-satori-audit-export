@@ -110,15 +110,13 @@ terraform validate
 terraform apply
 ```
 
-Now wait about 15-20 minutes while terraform deploys the following:
-- A Pubsub topic which will trigger our function 
-- Cloud Storage for our python code
-- Cloud SQL Instance for storing the audit data
-- Cloud Function for running the python code
-
-The SQL instance takes the longest - up to 15 minutes. Ideally, this command returns with no errors nor warnings. 
-
-If everything worked, the text output will show the IP address of the postgres database.
+- Now wait about 15-20 minutes while terraform deploys the following:
+	- A Pubsub topic which will trigger our function 
+	- Cloud Storage for our python code
+	- Cloud SQL Instance for storing the audit data
+	- Cloud Function for running the python code
+- The SQL instance takes the longest - up to 15 minutes. Ideally, this command returns with no errors nor warnings. 
+- If everything worked, the text output will show the IP address of the postgres database.
 
 9. At the command line, send this message:
 
