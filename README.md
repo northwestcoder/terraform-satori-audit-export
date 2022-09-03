@@ -1,0 +1,129 @@
+# Satori Audit Data Export: Terraform Devops Automation
+
+**A Terraform config for creating GCP resources to receive Satori security audit data**
+
+- The following steps are meant as a quick-start guide.
+- The end result will be a new GCP project with an automation solution:
+	- when a message is received via Google PubSub to a certain topic, then
+	- extract Satori query/audit data, and then
+	- insert that data into a Cloud SQL instance (Postgres)
+
+_GCP opinions:_
+
+- This example was tested using a very plain, simple GCP project and zero GCP 'organizations'. 
+- All of the security settings are 'default' and thus have reasonable security.
+- However, your org may have an entirely different security topology which will make this config fail.
+- The SQL database that we create is assigned a public IP address. Your org IAM policy settings may prohibit this.
+- The Cloud Function we build uses Python 3.10 and runs under the standard GCP 'appspot' account. Your org IAM policy settings may prohibit this.
+- There are many other reasons this config will fail, and they will _all_ have something to do with the way your GCP security is configured.
+
+The first requirement is that you already have a Satori account and that account has some audit data - i.e. the account is actively being used. You need to be an admin for that Satori account. Head over to the [Satori Docs](https://app.satoricyber.com/docs/api) to learn how to create a service account ID and service account secret.
+
+The rest of the requirements are shown in the following steps - each step must succeed in order to proceed to the next step!
+
+
+___
+
+1. Install gcloud and terraform: 
+
+	- Google gcloud install [info here](https://cloud.google.com/sdk/docs/install). For example, we used the ./install.sh on macos.
+
+	- Hashicorp Terraform install [info here](https://www.terraform.io/downloads). For example, we used the brew method.
+
+2. Once both are installed, log into gcloud:
+```
+gcloud auth login
+```
+
+This will launch your browser and authenticate you against GCP. Both have to succeed, in order to continue.
+
+
+3. IN WEB BROWSER: create a new empty GCP project, you should be admin for this project. Take note of its PROJECT_ID
+
+
+4. Back in your command terminal:
+
+```gcloud config set project PROJECT_ID```
+
+5. Where PROJECT_ID is from the above step.
+
+6. You *must* turn on the following API's or else failure.
+
+```
+gcloud services enable cloudapis.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud services enable clouddebugger.googleapis.com
+gcloud services enable cloudfunctions.googleapis.com
+gcloud services enable cloudtrace.googleapis.com
+gcloud services enable containerregistry.googleapis.com
+gcloud services enable datastore.googleapis.com
+gcloud services enable logging.googleapis.com
+gcloud services enable monitoring.googleapis.com
+gcloud services enable pubsub.googleapis.com
+gcloud services enable servicemanagement.googleapis.com
+gcloud services enable serviceusage.googleapis.com
+gcloud services enable sql-component.googleapis.com
+gcloud services enable sqladmin.googleapis.com
+gcloud services enable storage-api.googleapis.com
+gcloud services enable storage-component.googleapis.com
+gcloud services enable storage.googleapis.com
+```
+
+You can paste the above into your terminal - it may take 1-2 minutes to run.
+
+7. With a text editor, you _must_ edit the file ```terraform.tfvars``` file and change any value in ALLCAPS accordingly. You _can_ change the other values as well, if desired, such as the database password:
+
+```
+#project vars
+project = "YOUR_GCP_PROJECT_ID_FROM_PREVIOUS_STEP"
+region = "us-east1"
+zone = "us-east1-c"
+
+#database vars
+sql_tier = "db-f1-micro"
+postgres_username = "postgres"
+postgres_password = "Change!This^Password"
+postgres_database_name = "satoridb"
+postgres_schema_name = "public"
+postgres_table_name = "audit_data"
+postgres-server-instance-name = "satori-terraform-postgres"
+postgres_port = "5432"
+
+#pubsub topic name
+satori-audit-export-request = "satori-audit-export-request"
+
+#satori info
+satori_serviceaccount_id = "SATORI_SA_ID"
+satori_serviceaccount_key = "SATORI_SA_KEY"
+satori_account_id = "SATORI_ACCOUNT_ID"
+satori_api_host = "app.satoricyber.com"
+```
+
+8. Make sure you are in the directory where this repo is located, then:
+```
+terraform init
+terraform validate
+terraform apply
+```
+
+Now wait about 15-20 minutes while terraform deploys the following:
+- A Pubsub topic which will trigger our function 
+- Cloud Storage for our python code
+- Cloud SQL Instance for storing the audit data
+- Cloud Function for running the python code
+
+The SQL instance takes the longest - up to 15 minutes. Ideally, this command returns with no errors nor warnings. 
+
+If everything worked, the text output will show the IP address of the postgres database.
+
+9. At the command line, send this message:
+
+```
+gcloud pubsub topics publish satori-audit-export-request --message="3"
+```
+
+By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve data for the last three days. You can change ```message="3"``` to any value up to 90. Don't forget the quotes.
+
+**You should have Satori audit data now. Success!**
+
+Your client IP will have been added to the database network list, so you can fire up your favorite db client and connect to your new Satori Postgres database hosting your audit data using the IP address which was output from the previous step.
