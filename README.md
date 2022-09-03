@@ -35,7 +35,7 @@ ___
 gcloud auth login
 ```
 
-This will launch your browser and authenticate you against GCP. Both have to succeed, in order to continue.
+This will launch your browser and authenticate you against GCP. This needs to succeed, in order to continue.
 
 
 3. IN WEB BROWSER: create a new empty GCP project, you should be admin for this project. Take note of its PROJECT_ID
