@@ -52,13 +52,13 @@ This will launch your browser and authenticate you against GCP. This needs to su
 
 3. In your web browser, log into the [Google Cloud Console](https://console.cloud.google.com) and create a new empty GCP project, you should be admin for this project. Take note of the PROJECT_ID.
 
-4. Back in your command terminal:
+4. Back in your command terminal, run:
 
 ```gcloud config set project PROJECT_ID```
 
-5. Where PROJECT_ID is from the above step.
+- Where PROJECT_ID is from the above step.
 
-6. You *must* turn on the following API's or else failure will occur. You can paste the following into your terminal - it may take 1-2 minutes to run.
+5. You *must* turn on the following API's or else failure will occur. You can paste the following into your terminal - it may take 1-2 minutes to run.
 ```
 gcloud services enable cloudapis.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
@@ -79,7 +79,7 @@ gcloud services enable storage-component.googleapis.com
 gcloud services enable storage.googleapis.com
 ```
 
-7. If you haven't done so yet, download this repository that you are currently reading and edit the variables:
+6. If you haven't done so yet, download this repository that you are currently reading and edit the variables:
  
 - Use git clone, or, download zip and extract. 
 - In your terminal, navigate to the directory where this repository is located.
@@ -113,7 +113,7 @@ satori_account_id = "SATORI_ACCOUNT_ID"
 satori_api_host = "app.satoricyber.com"
 ```
 
-8. At the command line, make sure you are in the directory where this repo is located, and then run:
+7. At the command line, make sure you are in the directory where this repo is located, and then run:
 ```
 terraform init
 ```
@@ -136,7 +136,7 @@ This last command executes all of the instructions and builds the solution.
 - Ideally, this command returns with no errors nor warnings. 
 - If everything worked, the text output will show the IP address of the Postgres database that was created.
 
-9. At the command line, send this message:
+8. At the command line, send this message:
 ```
 gcloud pubsub topics publish satori-audit-export-request --message="3"
 ```
