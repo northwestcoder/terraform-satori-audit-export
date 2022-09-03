@@ -148,7 +148,7 @@ Your client IP will have been added to the database network list, so you can fir
 
 **Clean up / Tear Down**
 
-- If you run ```terraform destroy``` it will throw an error on the sql instance step
-- This is because terraform detects that the database is no longer empty (if you ran all the steps above)
-- To fix this, first run ```drop table public.audit_data`` in your database client
-- Now you can run ```terraform destroy``` at the command line and all of the above resources will be removed from your Google Cloud project.
+- If you run ```terraform destroy``` it will throw an error on the sql instance step.
+- This is because terraform detects that the database is no longer empty (if you ran all the steps above).
+- To fix this, first run ```drop table public.audit_data``` in your database client.
+- Now at the command line you can run ```terraform destroy```, and all of the above resources will be removed from your Google Cloud project.
