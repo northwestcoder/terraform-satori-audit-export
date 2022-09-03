@@ -71,7 +71,15 @@ gcloud services enable storage.googleapis.com
 
 You can paste the above into your terminal - it may take 1-2 minutes to run.
 
-7. With a text editor, you _must_ edit the file ```terraform.tfvars``` file and change any value in ALLCAPS accordingly. You _can_ change the other values as well, if desired, such as the database password:
+7. If you haven't done so yet, download this repository and edit the variables
+ 
+Use git clone, or, download zip and extract. 
+
+In your terminal, navigate to the directory where this repository is located. 
+
+With a text editor, you _must_ edit the file ```terraform.tfvars``` file and change any value in ALLCAPS accordingly. 
+
+You _can_ change the other values as well, if desired, such as the database password:
 
 ```
 #project vars
@@ -99,7 +107,7 @@ satori_account_id = "SATORI_ACCOUNT_ID"
 satori_api_host = "app.satoricyber.com"
 ```
 
-8. Make sure you are in the directory where this repo is located, then:
+8. Make sure you are in the directory where this repo is located, and then:
 ```
 terraform init
 terraform validate
