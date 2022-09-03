@@ -155,7 +155,7 @@ ___
 - You can now launch your favorite db client and connect to your new Postgres database hosting your Satori audit data.
 - The hostname is the IP address which was output from the previous step.
 - If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
-- This quick start defaults to SQL SSL mode = false, so SSL is not enabled. If you change to this to 'true', then you will need to configure client certificates and add those to your database client - these steps are outside the scope of this quick start but readily solved.
+- This quick start defaults to SQL SSL mode = false, so SSL is not enabled. If you change this to 'true', then you will need to configure client certificates and add those certs to your database client - these steps are outside the scope of this quick start but readily solved.
 
 **Clean up / Tear Down**
 
