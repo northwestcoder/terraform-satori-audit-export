@@ -113,12 +113,19 @@ satori_account_id = "SATORI_ACCOUNT_ID"
 satori_api_host = "app.satoricyber.com"
 ```
 
-8. Make sure you are in the directory where this repo is located, and then:
+8. At the command line, make sure you are in the directory where this repo is located, and then run:
 ```
 terraform init
+```
+This sets up the Terraform environment
+```
 terraform validate
+```
+This validates the .tf files
+```
 terraform apply
 ```
+This last command executes all of the instructions and builds the solution.
 
 - **Now wait about 15-20 minutes while terraform deploys the following:**
 	- A Pubsub topic which will trigger our function 
