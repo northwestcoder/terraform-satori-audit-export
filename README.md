@@ -56,7 +56,7 @@ ___
 gcloud auth login
 ```
 
-3. In your command terminal, run the following. This creates a project whose ID is "satori-audit-exports". You will need this ID later.
+3. In your command terminal, run the following. This creates a project whose ID is "satori-audit-exports".
 ```
 gcloud projects create satori-audit-exports --name="Satori Audit Exports Terraform"
 ```
