@@ -160,7 +160,11 @@ ___
 - _You can now launch your favorite db client and connect to your new Postgres database hosting your Satori audit data!_
 - The hostname is the IP address which was output to the terminal at the end of ```terraform apply```. The username, password and port are found in your ```terraform.tfvars``` file.
 - If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
-- This quick start defaults to ```ssl_mode = false```, so SSL is not enabled. If you change this to ```true```, then this terraform config will create a client cert bundle for your new Cloud SQL instance. This information will be buried inside the terraform.tfstate file. You can run the following commands to create three new files to be used with your database client. You will need to install the ```jq``` command first, e.g. on a mac you can run ```brew install jq```. Then, to create the three new cert files, run the following:
+- This quick start defaults to ```ssl_mode = false```, so SSL is not enabled for your Cloud SQL instance. If you change this to ```true```, then this terraform config will create a client cert bundle for your new Cloud SQL instance.
+	- This information will be buried inside the terraform.tfstate file. 
+	- You can run the following commands to create three new files to be used with your database client.
+	- You will need to install the ```jq``` command first, e.g. on a mac you can run ```brew install jq```.
+	- Then, to create the three new cert files, run the following:
 ```
 terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.cert' > certs/client.pem
 terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.private_key' > certs/private.key
