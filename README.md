@@ -49,7 +49,7 @@ ___
 
 
 ### Setup
-:orange_circle:
+:computer:
 
 1. Install gcloud and terraform. 
 	- Google gcloud install [info here](https://cloud.google.com/sdk/docs/install). For example, we used the ./install.sh on macos.
@@ -167,7 +167,7 @@ ___
 
 
 ### Usage
-:green_circle:
+:information_desk_person:
 
 **You should have Satori audit data in your database now. Success!**
 
