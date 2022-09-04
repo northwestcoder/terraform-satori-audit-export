@@ -18,7 +18,7 @@ ___
 	- extract Satori query/audit data for the specified relative timeframe "days ago up to yesterday", and then
 	- insert this data into a Google Cloud Postgres SQL instance.
 
-- What you will need:
+- **Requirements**:
 	- A [Google Cloud](https://console.cloud.google.com/welcome) account and the ability to create new cloud projects as an admin.
 	- A [Satori](https://satoricyber.com/testdrive) account with admin rights.
 	- Access to a command line / terminal session. Note: this project was tested on macOS/bash.
