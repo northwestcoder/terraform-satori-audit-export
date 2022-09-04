@@ -49,6 +49,7 @@ ___
 
 
 ### Setup
+:orange_circle:
 
 1. Install gcloud and terraform. 
 	- Google gcloud install [info here](https://cloud.google.com/sdk/docs/install). For example, we used the ./install.sh on macos.
@@ -166,6 +167,7 @@ ___
 
 
 ### Usage
+:green_circle:
 
 **You should have Satori audit data in your database now. Success!**
 
@@ -186,6 +188,7 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
 - If for some reason there is no data in the table, then a program error has occurred in the Google Cloud Function. Go to that function in your web browser and then review its logs for error codes or more info.
  
 ### Rollback
+:no_entry_sign:
 
 - To roll back or undo your work in terraform, you run ```terraform destroy```.
 - However, if you run ```terraform destroy``` for this project, it will throw an error on the SQL instance step.
