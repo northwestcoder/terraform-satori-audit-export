@@ -87,7 +87,7 @@ gcloud services enable storage-component.googleapis.com
 gcloud services enable storage.googleapis.com
 ```
 
-6. If you haven't done so yet, download this repository that you are currently reading and edit the variables in the file ```terraform.tfvars```.
+6. **If you haven't done so yet, download this repository that you are currently reading and edit the variables in the file ```terraform.tfvars```.**
  
 - Use git clone, or, download zip and extract. 
 - In your terminal, navigate to the directory where this repository is located.
