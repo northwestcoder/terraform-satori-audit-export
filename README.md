@@ -164,7 +164,7 @@ ___
 	- This information will be buried inside the terraform.tfstate file. 
 	- You can run the following commands to create three new files to be used with your database client.
 	- You will need to install the ```jq``` command first, e.g. on a mac you can run ```brew install jq```.
-	- Then, to create the three new cert files, run the following:
+	- Then, to create the three new cert files which will be created in a new 'certs' directory, run the following:
 ```
 terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.cert' > certs/client.pem
 terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.private_key' > certs/private.key
