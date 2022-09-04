@@ -18,12 +18,12 @@
 
 - _GCP opinions:_
 
-	- This example was tested using a very plain, simple GCP project and zero GCP 'organizations'. 
+	- This example was tested using a very plain, simple Google Cloud project and zero 'organizations'. 
 	- All of the security settings are 'default' and thus have reasonable security.
 	- However, your org may have an entirely different security topology which will make this config fail.
 	- The SQL database that we create is assigned a public IP address. Your org IAM policy settings may prohibit this.
-	- The Cloud Function we build uses Python 3.10 and runs under the standard GCP 'appspot' account. Your org IAM policy settings may prohibit this.
-	- There are many other reasons this config will fail, and they will _all_ have something to do with the way your GCP security is configured.
+	- The Cloud Function we build uses Python 3.10 and runs under the standard 'appspot' account. Your org IAM policy settings may prohibit this.
+	- There are many other reasons this config will fail, and they will likely have something to do with the way your Google Cloud security is configured.
 
 - Satori Config:
 	- One of the first requirements is that you already have a [Satori account](https://www.satoricyber.com/testdrive) and that account has some audit data - i.e. the account is actively being used.
