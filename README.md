@@ -39,11 +39,11 @@ ___
 
 #### :orange_circle: Setup
 
-1. Install gcloud and terraform: 
+1. Install gcloud and terraform. 
 	- Google gcloud install [info here](https://cloud.google.com/sdk/docs/install). For example, we used the ./install.sh on macos.
 	- Hashicorp Terraform install [info here](https://www.terraform.io/downloads). For example, we used the brew method.
 
-2. Once both are installed, in your command terminal, run the following. This will launch your browser and authenticate you against Google Cloud. This needs to succeed, in order to continue:
+2. Once both are installed, in your command terminal, run the following. This will launch your browser and authenticate you against Google Cloud. This needs to succeed, in order to continue.
 ```
 gcloud auth login
 ```
@@ -53,7 +53,7 @@ gcloud auth login
 gcloud projects create satori-audit-exports --name="Satori Audit Exports Terraform"
 ```
 
-4. In your command terminal, run the following to switch to this project for gcloud:
+4. In your command terminal, run the following to switch to this project for gcloud.
 ```
 gcloud config set project satori-audit-exports
 ```
@@ -79,7 +79,7 @@ gcloud services enable storage-component.googleapis.com
 gcloud services enable storage.googleapis.com
 ```
 
-6. If you haven't done so yet, download this repository that you are currently reading and edit the variables in the file ```terraform.tfvars```:
+6. If you haven't done so yet, download this repository that you are currently reading and edit the variables in the file ```terraform.tfvars```.
  
 - Use git clone, or, download zip and extract. 
 - In your terminal, navigate to the directory where this repository is located.
@@ -143,8 +143,8 @@ This last command executes all of the instructions and builds the solution.
 gcloud pubsub topics publish satori-audit-export-request --message="3"
 ```
 
-- By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve Satori audit data using the Satori Rest API, for the last three days.
-- You can change ```message="3"``` to any value up to 90. Don't forget the quotes. 
+- By posting a message to the Pubsub topic, this will trigger the cloud function to retrieve Satori audit data from the last 3 days using the Satori Rest API.
+- You can change ```message="3"``` to any value up to 90. 
 - This message based trigger is useful in many ways due to the relative nature of the "days ago" parameter, combined with primary key support for the audit data itself using column ```flow_id```.
 - For example, from a production POV you can envision setting up a schedule to send a message to Pubsub once a week, to retrieve the last 7 days of audit data. Try this [quick start](https://cloud.google.com/scheduler/docs/tut-pub-sub) for more info.
 
@@ -152,7 +152,7 @@ ___
 
 #### :green_circle: Usage
 
-**You should have Satori audit data now. Success!**
+**You should have Satori audit data in your database now. Success!**
 
 - Your client IP will have been added to the database network list.
 - _You can now launch your favorite db client and connect to your new Postgres database hosting your Satori audit data!_
