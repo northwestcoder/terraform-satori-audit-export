@@ -142,14 +142,13 @@ ___
 - The hostname is the IP address which was output to the terminal at the end of ```terraform apply```. The username, password and port are found in your ```terraform.tfvars``` file.
 - If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
 - This quick start defaults to ```ssl_mode = false```, so SSL is not enabled for your Cloud SQL instance. If you change this to ```true```, then this terraform config will create a client cert bundle for your new Cloud SQL instance.
-	- This information will be buried inside the terraform.tfstate file. 
-	- You can run the following commands to create three new files to be used with your database client.
-	- You will need to install the ```jq``` command first, e.g. on a mac you can run ```brew install jq```.
-	- Then, to create the three new cert files, run the following:
+	- This information will be buried inside the terraform.tfstate file.
+	- You can run the following commands to get the output of your three SSL certs needed for your database client.
+	- You can then create three new text files with this output content for use when connecting with your client:
 ```
-terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.cert' > client.pem
-terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.private_key' > private.key
-terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.server_ca_cert' > server_ca.pem
+terraform output client-cert
+terraform output private-key
+terraform output server-ca
 ```
 - If after sending your Pubsub message there is no data in the created SQL table, then a program error has occurred in the Google Cloud Function. Go to that function in your web browser and then review its logs for error codes or more info.
  
