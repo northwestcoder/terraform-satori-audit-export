@@ -8,16 +8,15 @@
 
 - The end result will be a new GCP project with an automation solution:
 	- when a message is received via Google PubSub to a certain topic, then
-	- extract Satori query/audit data for the specified relative timeframe, and then
-	- insert that data into a Cloud SQL instance (Postgres)
+	- extract Satori query/audit data for the specified relative timeframe "days ago up to yesterday", and then
+	- insert this data into a Google Cloud Postgres SQL instance.
 
 - What you will need:
-	- A [Google Cloud](https://console.cloud.google.com/welcome) account and the ability to create new cloud projects.
+	- A [Google Cloud](https://console.cloud.google.com/welcome) account and the ability to create new cloud projects as an admin.
 	- A [Satori](https://satoricyber.com/testdrive) account with admin rights.
-	- Access to a command line / terminal session. Note: this project was tested on macos/bash.
+	- Access to a command line / terminal session. Note: this project was tested on macOS/bash.
 
 - _GCP opinions:_
-
 	- This example was tested using a very plain, simple Google Cloud project and zero 'organizations'. 
 	- All of the security settings are 'default' and thus have reasonable security.
 	- However, your org may have an entirely different security topology which will make this config fail.
@@ -41,9 +40,7 @@ ___
 #### :orange_circle: Setup
 
 1. Install gcloud and terraform: 
-
 	- Google gcloud install [info here](https://cloud.google.com/sdk/docs/install). For example, we used the ./install.sh on macos.
-
 	- Hashicorp Terraform install [info here](https://www.terraform.io/downloads). For example, we used the brew method.
 
 2. Once both are installed, in your command terminal, run the following. This will launch your browser and authenticate you against Google Cloud. This needs to succeed, in order to continue:
@@ -82,12 +79,13 @@ gcloud services enable storage-component.googleapis.com
 gcloud services enable storage.googleapis.com
 ```
 
-6. If you haven't done so yet, download this repository that you are currently reading and edit the variables:
+6. If you haven't done so yet, download this repository that you are currently reading and edit the variables in the file ```terraform.tfvars```:
  
 - Use git clone, or, download zip and extract. 
 - In your terminal, navigate to the directory where this repository is located.
 - With a text editor, you **must edit** the three Satori values in ALLCAPS in the file ```terraform.tfvars```. 
 - You _can optionally_ change the other values as well, such as the database password or GCP region and zone. Then save the file.
+- To run this quick start as-is, this is the only file you need to edit.
 ```
 #contents of terraform.tfvars file
 #satori vars
