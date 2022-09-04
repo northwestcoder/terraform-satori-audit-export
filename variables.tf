@@ -2,7 +2,6 @@ variable "project" {
 }
 
 variable "region" {
-  default = "us-east1"
 }
 
 variable "sql_tier" {
@@ -12,7 +11,6 @@ variable "zone" {
 }
 
 variable "postgres_username" {
-  default = "postgres"
 }
 
 variable "postgres_password" {
