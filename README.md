@@ -6,7 +6,7 @@
 **[Summary](#Summary)**<br>
 **[Setup](#Setup)**<br>
 **[Usage](#Usage)**<br>
-**[Tear Down](#Tear Down)**<br>
+**[Rollback](#🔴 Rollback)**<br>
 
 ___
 
@@ -47,8 +47,8 @@ ___
 
 ___
 
-:orange_circle: 
-#### Setup
+
+#### Setup :orange_circle: 
 
 1. Install gcloud and terraform. 
 	- Google gcloud install [info here](https://cloud.google.com/sdk/docs/install). For example, we used the ./install.sh on macos.
@@ -164,8 +164,8 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 
 ___
 
-:green_circle: 
-#### Usage
+
+#### Usage :green_circle: 
 
 **You should have Satori audit data in your database now. Success!**
 
@@ -184,9 +184,8 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
 terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.server_ca_cert' > certs/server_ca.pem
 ```
 - If for some reason there is no data in the table, then a program error has occurred in the Google Cloud Function. Go to that function in your web browser and then review its logs for error codes or more info.
-
-:red_circle: 
-#### Tear Down
+ 
+#### 🔴 Rollback
 
 - To roll back or undo your work in terraform, you run ```terraform destroy```.
 - However, if you run ```terraform destroy``` for this project, it will throw an error on the SQL instance step.
