@@ -143,7 +143,8 @@ ___
 - If you left the defaults alone, you have a single table ```public.audit_data``` to explore.
 - This quick start defaults to ```ssl_mode = false```, so SSL is not enabled for your Cloud SQL instance. If you change this to ```true```, then this terraform config will create a client cert bundle for your new Cloud SQL instance.
 	- This information will be buried inside the terraform.tfstate file.
-	- You can run the following commands to get the output of your three SSL certs needed for your database client.
+	- Add the terraform block in ```certs.txt``` to the end of your ```main.tf``` file and then rerun ```terraform apply```
+	- You can then run the following commands to get the output of your three SSL certs needed for your database client.
 	- You can then create three new text files with this output content for use when connecting with your client:
 ```
 terraform output client-cert
