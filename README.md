@@ -166,7 +166,7 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
  	- Cloud SQL names are reserved for 10 days. 
  	- If you run ```terraform destroy```, and then re-run ```terraform apply```, you will get an error on the Cloud SQL step. 
  	- This is because even though terraform deleted the Cloud SQL instance, Google Cloud keeps its name reserved for up to ten days.
- 	- To solve for this, each time you re-run this terraform config, you will need to change the ```postgres-server-instance-name``` variable to a new value.
+ 	- To solve for this, each time you ```terraform apply``` after a ```terraform destroy```, you will first need to change the ```postgres-server-instance-name``` variable to a previously unused and new value.
 
 
 _happy auditing!_
