@@ -170,7 +170,7 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
 
 #### :red_circle: Clean up / Tear Down
 
-- To unapply in terraform, you run ```terraform destroy```.
+- To roll back or undo your work in terraform, you run ```terraform destroy```.
 - However, if you run ```terraform destroy``` for this project, it will throw an error on the SQL instance step.
 - This is because terraform detects that the database is no longer empty - if you ran all the steps above this is true.
 - To fix this, 
