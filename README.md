@@ -1,7 +1,7 @@
 # Satori Audit Data Export: Terraform Devops Automation
 
 ![Satori Logi](https://satoricyber.com/wp-content/uploads/LogoDark2.svg)
-![Google Cloud Logo](https://www.freecodecamp.org/news/content/images/2020/10/gcp.png)
+![Google Cloud Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Google_Cloud_logo.svg/2560px-Google_Cloud_logo.svg.png)
 
 **[Summary](#Summary)**<br>
 **[Setup](#Setup)**<br>
