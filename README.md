@@ -134,6 +134,9 @@ This last command executes all of the instructions and builds the solution.
 	- Cloud Storage for our python code.
 	- A Cloud SQL Instance for storing the audit data.
 	- A Cloud Function for running the python code.
+		- Terraform uses the source code from this repository you are currently reading, and
+		- Zips up that code and loads it to a Google Cloud storage bucket.
+		- The Cloud Function then uses the python code for executing calls to the Satori API and then runs database upserts.
 - The SQL instance takes the longest - up to 15 minutes.
 - Ideally, this command returns with no errors nor warnings. 
 - If everything worked, the text output will show the IP address of the Postgres database that was created.
