@@ -170,27 +170,3 @@ output "newsql-ip" {
     google_sql_database_instance.instance
   ]
 }
-
-
-output "client-cert" {
-  value = google_sql_ssl_cert.client_cert[0].cert
-  depends_on = [
-    google_sql_ssl_cert.client_cert
-  ]
-}
-
-output "private-key" {
-  value = google_sql_ssl_cert.client_cert[0].private_key
-  sensitive = true
-  depends_on = [
-    google_sql_ssl_cert.client_cert
-  ]
-}
-
-output "server-ca" {
-  value = google_sql_ssl_cert.client_cert[0].server_ca_cert
-  depends_on = [
-    google_sql_ssl_cert.client_cert
-  ]
-}
-
