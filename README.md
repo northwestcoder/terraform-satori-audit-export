@@ -183,7 +183,7 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
 terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.private_key' > certs/private.key
 terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | select(.address=="google_sql_ssl_cert.client_cert") | .values.server_ca_cert' > certs/server_ca.pem
 ```
-- If for some reason there is no data in the table, then a program error has occurred in the Google Cloud Function. Go to that function in your web browser and then review its logs for error codes or more info.
+- If after sending your Pubsub message there is no data in the created SQL table, then a program error has occurred in the Google Cloud Function. Go to that function in your web browser and then review its logs for error codes or more info.
  
 ### Rollback
 
@@ -199,3 +199,6 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
  	- If you run ```terraform destroy```, and then re-run ```terraform apply```, you will get an error on the Cloud SQL step. 
  	- This is because even though terraform deleted the Cloud SQL instance, Google Cloud keeps its name reserved for up to ten days.
  	- To solve for this, each time you re-run this terraform config, you will need to change the ```postgres-server-instance-name``` variable to a new value.
+
+
+_happy auditing!_
