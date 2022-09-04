@@ -44,6 +44,8 @@ locals {
   ]
 }
 
+
+
 ########################
 # CLOUD SQL
 
@@ -53,10 +55,6 @@ resource "google_sql_database_instance" "instance" {
   region           = var.region
   settings {
     tier = var.sql_tier
-    database_flags {
-      name  = "password_encryption"
-      value = "md5"
-    }
     ip_configuration {
       ipv4_enabled = true
       require_ssl  = var.ssl_mode
@@ -95,6 +93,8 @@ resource "google_sql_ssl_cert" "client_cert" {
   common_name = "Satori client cert"
   instance    = google_sql_database_instance.instance.name
 }
+
+
 
 ###########################
 # BUCKETS FOR CLOUD FUNCTION
@@ -165,11 +165,10 @@ resource "google_cloudfunctions_function" "function" {
 }
 
 
+
 output "newsql-ip" {
   value = "sql server is running on ${google_sql_database_instance.instance.public_ip_address} and we have added your ip address of ${chomp(data.http.myip.response_body)} to its network security list."
   depends_on = [
     google_sql_database_instance.instance
   ]
 }
-
-
