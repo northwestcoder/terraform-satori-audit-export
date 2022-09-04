@@ -2,7 +2,13 @@
 
 ![Satori Logi](https://satoricyber.com/wp-content/uploads/LogoDark2.svg)
 
-[Headers](#headers) 
+
+**[Summary](#Summary)**<br>
+**[Setup](#:orange_circle: Setup)**<br>
+**[Usage](#:green_circle: Usage)**<br>
+**[Tear Down](#:red_circle: Tear Down / Clean up)**<br>
+
+___
 
 #### Summary
 
@@ -177,7 +183,7 @@ terraform show -json terraform.tfstate | jq '.values.root_module.resources[] | s
 ```
 - If for some reason there is no data in the table, then a program error has occurred in the Google Cloud Function. Go to that function in your web browser and then review its logs for error codes or more info.
 
-#### :red_circle: Clean up / Tear Down
+#### :red_circle: Tear Down / Clean up
 
 - To roll back or undo your work in terraform, you run ```terraform destroy```.
 - However, if you run ```terraform destroy``` for this project, it will throw an error on the SQL instance step.
