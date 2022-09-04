@@ -169,4 +169,4 @@ terraform output server-ca
  	- To solve for this, each time you ```terraform apply``` after a ```terraform destroy```, you will first need to change the ```postgres-server-instance-name``` variable to a previously unused and new value.
 
 
-_happy auditing!_
+_happy Satori auditing!_
