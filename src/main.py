@@ -39,8 +39,8 @@ unix_socket = '/cloudsql/{}'.format(postgres_server)
 # we define a function to retrieve audit entries / data flows, 
 # this is called in the final jupyter block below
 # This is a sample only, do not use in production!
-def getAuditLogs(audit_days_ago_to_yesterday):
-
+def get_audit_logs(audit_days_ago_to_yesterday):
+    print("Retrieving data from the Satori Rest API")
     # This function retrieves Satori audit entries from the last thirty days up to yesterday
     yesterday_start = datetime.date.today() - datetime.timedelta(audit_days_ago_to_yesterday)
     unix_time_start = yesterday_start.strftime("%s") + "000"
@@ -165,7 +165,7 @@ def mainwork(cloud_event):
     satori_copy_to_buffer = "COPY " + postgres_schema_name + ".satori_audit_tempbuffer" + " FROM stdin WITH CSV HEADER DELIMITER ','"
 
     try:
-        cursor.copy_expert(sql=satori_copy_to_buffer, file=getAuditLogs(audit_days_ago_to_yesterday))
+        cursor.copy_expert(sql=satori_copy_to_buffer, file=get_audit_logs(audit_days_ago_to_yesterday))
         conn.commit()
     except Exception as err:
         print("Oops! An exception has occured:", err)
@@ -204,6 +204,7 @@ def mainwork(cloud_event):
     """
 
     try:
+        print("Loading data into the Postgres Table")
         cursor.execute(query=satori_insert_sql)
         conn.commit()
     except Exception as err:
@@ -220,7 +221,7 @@ def mainwork(cloud_event):
         cursor.execute(query=satori_drop_temp_table_sql)
         conn.commit()
         conn.close()
-        print("We got to the end, it all seems to have worked out!")
+        print("We got to the end, it all seems to have worked out")
     except Exception as err:
         print("Oops! An exception has occured:", err)
         print("Exception TYPE:", type(err))
