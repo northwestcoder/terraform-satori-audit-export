@@ -1,0 +1,24 @@
+# add this terraform block to the end of main.tf *after* running your first terraform apply. Then rerun the apply.
+# this will show you the text for three certs
+
+output "client-cert" {
+  value = google_sql_ssl_cert.client_cert[0].cert
+  depends_on = [
+    google_sql_ssl_cert.client_cert
+  ]
+}
+
+output "private-key" {
+  value = google_sql_ssl_cert.client_cert[0].private_key
+  sensitive = true
+  depends_on = [
+    google_sql_ssl_cert.client_cert
+  ]
+}
+
+output "server-ca" {
+  value = google_sql_ssl_cert.client_cert[0].server_ca_cert
+  depends_on = [
+    google_sql_ssl_cert.client_cert
+  ]
+}
