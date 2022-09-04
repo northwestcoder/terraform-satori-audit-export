@@ -129,9 +129,9 @@ gcloud pubsub topics publish satori-audit-export-request --message="3"
 - You can change ```message="3"``` to any value up to 90. 
 - This message based trigger is useful in many ways due to the relative nature of the "days ago" parameter, combined with primary key support for the audit data itself using column ```flow_id```.
 - For example, from a production POV you can envision setting up a schedule to send a message to Pubsub once a week, to retrieve the last 7 days of audit data. Try this [quick start](https://cloud.google.com/scheduler/docs/tut-pub-sub) for more info.
+- Note about time limits: Google Cloud functions have a 540 second (9 minute) maximum runtime. You may exceed this time limit if you attempt to pull too much Satori audit data at any one time.
 
 ___
-
 
 ### Usage
 
