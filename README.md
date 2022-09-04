@@ -1,5 +1,7 @@
 # Satori Audit Data Export: Terraform Devops Automation
 
+**A Terraform config for creating Google Cloud resources that will receive [Satori](https://www.satoricyber.com) query audit data on a schedule**
+
 **[Summary](#Summary)**<br>
 **[Setup](#Setup)**<br>
 **[Usage](#Usage)**<br>
@@ -8,8 +10,6 @@
 ___
 
 ### Summary
-
-**A Terraform config for creating GCP resources to receive Satori query audit data**
 
 - The following steps are meant as a quick-start guide.
 
