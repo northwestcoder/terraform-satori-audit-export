@@ -87,15 +87,14 @@ gcloud services enable storage-component.googleapis.com
 gcloud services enable storage.googleapis.com
 ```
 
-6. **If you haven't done so yet, download this repository that you are currently reading and edit the variables in the file ```terraform.tfvars```.**
+6. **If you haven't done so yet, download this repository that you are currently reading, open the file ```terraform.tfvars``` with your favorite text editor, and edit at least three of the variables.**
  
-- Use git clone, or, download zip and extract. 
-- In your terminal, navigate to the directory where this repository is located.
+- Use git clone, or, download the zip and extract.
 - With a text editor, you **must edit** the three Satori values in ALLCAPS in the file ```terraform.tfvars```. 
 - You _can optionally_ change the other values as well, such as the database password or GCP region and zone. Then save the file.
 - To run this quick start as-is, this is the only file you need to edit.
 
-7. At the command line, make sure you are in the directory where this repo is located, and then run:
+7. At the command line, make sure you navigate to the directory where this repo is located, and then run:
 ```
 terraform init
 ```
